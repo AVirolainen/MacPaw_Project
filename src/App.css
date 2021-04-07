@@ -2,11 +2,12 @@
     display: flex;
     font-family: 'Jost', sans-serif;
     font-weight: 400;
+    background: #F8F8F7
 }
 
 /*-------Body---------*/
 .mainBody{
-    margin: 45px 0 0 45px;
+    margin: 45px 0 0 100px;
     height: 90vh;
     width: 50%
 }
@@ -42,7 +43,7 @@
 .bodyCards{
     margin-top: 25px;
 
-    width: 70%;
+    width: 80%;
     display: flex;
     justify-content: space-between;
 }
@@ -53,6 +54,10 @@
     border: 4px solid rgba(255, 255, 255, 0.6);
     box-sizing: border-box;
     border-radius: 20px;
+
+    text-align: center;
+
+    display: flex;
 }
 
 .cardRoute:first-child{
@@ -66,15 +71,76 @@
 .cardRoute:nth-child(3){
     background: #FFD280;
 }
+.cardImage{
+    margin: auto;
+    max-width: 100%;
+    max-height: 100%;
+
+}
+.linkText{
+    font-weight: 500;
+    font-size: 18px;
+    color: #FF868E;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-decoration: none;
+
+}
+
+.buttons{
+    width: 80%;
+
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+.routeButton{
+    width: 138px;
+    height: 36px;
+    background: #FFFFFF;
+    border-radius: 10px;
+
+    text-align: center;
+}
 
 
 
 
 /*-------Image---------*/
-.mainImage{
-    margin: 45px;
-    height: 90vh;
+.mainField{
     width: 50%;
+    display: flex;
+
+    position: relative;
+}
+
+.fieldBack{
+    margin: 45px 45px 45px 90px;
+    height: 90vh;
+    width: 85%;
     background-color: #FBE0DC;
     border-radius: 45px;
+    position: absolute;
+    overflow: visible;
+
+}
+
+.wrapper{
+    position: absolute;
+    z-index: 10;
+    overflow: visible;
+
+}
+.mainImage{
+    width: 850px;
+    height: 1024px;
+    margin-top: -40px;
+    margin-left: 25px;
+
+
+
+
 }
