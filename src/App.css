@@ -1,38 +1,80 @@
-.App {
-  text-align: center;
+.appBody{
+    display: flex;
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/*-------Body---------*/
+.mainBody{
+    margin: 45px 0 0 45px;
+    height: 90vh;
+    width: 50%
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.logo{
+    height: 35px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.bodyHeader{
+    margin-top: 50px;
+
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    font-size: 44px;
+
 }
 
-.App-link {
-  color: #61dafb;
+.headerText{
+    margin-top: 20px;
+
+    font-size: 20px;
+    color: #8C8C8C;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.bodyText{
+    margin-top: 80px;
+
+    font-weight: 500;
+    font-size: 20px;
+    color: #1D1D1D;
+}
+
+.bodyCards{
+    margin-top: 25px;
+
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.cardRoute{
+    width: 138px;
+    height: 198px;
+    border: 4px solid rgba(255, 255, 255, 0.6);
+    box-sizing: border-box;
+    border-radius: 20px;
+}
+
+.cardRoute:first-child{
+    background: #B4B7FF;
+}
+
+.cardRoute:nth-child(2){
+    background: #97EAB9;
+}
+
+.cardRoute:nth-child(3){
+    background: #FFD280;
+}
+
+
+
+
+/*-------Image---------*/
+.mainImage{
+    margin: 45px;
+    height: 90vh;
+    width: 50%;
+    background-color: #FBE0DC;
+    border-radius: 45px;
 }

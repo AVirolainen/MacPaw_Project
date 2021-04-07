@@ -1,25 +1,38 @@
-import logo from './logo.svg';
+import logo from './images/logo.svg';
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div className="appBody">
+            <div className="mainBody">
+                <img src={logo} alt={"logo"} className="logo"/>
+                <div className="bodyHeader">
+                    Hi intern!
+                </div>
+                <div className="headerText">
+                    Welcome to MSI 2021 Front-end test
+                </div>
+                <div className="bodyText">
+                    Lets start using The Dogs API
+                </div>
+                <div className="bodyCards">
+                    <div className="cardRoute">
+
+                    </div>
+                    <div className="cardRoute">
+
+                    </div>
+                    <div className="cardRoute">
+
+                    </div>
+                </div>
+            </div>
+
+            <div className="mainImage">
+
+            </div>
+        </div>
+    );
 }
 
 export default App;
