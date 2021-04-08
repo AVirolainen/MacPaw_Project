@@ -8,8 +8,8 @@
 /*-------Body---------*/
 .mainBody{
     margin: 45px 0 0 100px;
-    height: 90vh;
-    width: 50%
+    height: 95vh;
+    width: 40%
 }
 
 .logo{
@@ -82,11 +82,8 @@
     font-size: 18px;
     color: #FF868E;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    text-align: center;
 
-    text-decoration: none;
 
 }
 
@@ -104,6 +101,9 @@
     border-radius: 10px;
 
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 
@@ -111,16 +111,16 @@
 
 /*-------Image---------*/
 .mainField{
-    width: 50%;
+    width: 60%;
     display: flex;
 
     position: relative;
 }
 
 .fieldBack{
-    margin: 45px 45px 45px 90px;
-    height: 90vh;
-    width: 85%;
+    margin: 15px 45px 45px 0;
+    height: 95vh;
+    width: 95.7%;
     background-color: #FBE0DC;
     border-radius: 45px;
     position: absolute;
@@ -135,10 +135,11 @@
 
 }
 .mainImage{
-    width: 850px;
+    width: 775px;
     height: 1024px;
     margin-top: -40px;
-    margin-left: 25px;
+    margin-left: 275px;
+
 
 
 

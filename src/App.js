@@ -2,7 +2,7 @@ import logo from './images/logo.svg';
 import votingImage from "./images/votingImage.svg"
 import breedsImage from "./images/breedsImage.svg"
 import galleryImage from "./images/galleryImage.svg"
-import mainImage from "./images/mainImage.png"
+import mainImage from "./images/mainImage.svg"
 import {
     BrowserRouter,
     Switch,
@@ -12,6 +12,8 @@ import {
 import BreedsPage from "./components/Breeds/BreedsPage";
 import VotingPage from "./components/Voting/VotingPage";
 import GalleryPage from "./components/Gallery/GalleryPage";
+
+
 
 import './App.css';
 
@@ -67,25 +69,27 @@ function App() {
                 </div>
             </div>
 
-            <Switch>
-                <Route exact path="/">
-                    <div className="mainField">
-                        <div className="fieldBack"/>
-                        <div className="wrapper">
-                            <img src={mainImage} alt={"galleryImage"} className="mainImage"/>
+
+                <Switch>
+                    <Route exact path="/">
+                        <div className="mainField">
+                            <div className="fieldBack"/>
+                            <div className="wrapper">
+                                <img src={mainImage} alt={"galleryImage"} className="mainImage"/>
+                            </div>
                         </div>
-                    </div>
-                </Route>
-                <Route path="/gallery">
-                    <GalleryPage />
-                </Route>
-                <Route path="/breeds">
-                    <BreedsPage />
-                </Route>
-                <Route path="/voting">
-                    <VotingPage />
-                </Route>
-            </Switch>
+                    </Route>
+                    <Route path="/gallery">
+                        <GalleryPage />
+                    </Route>
+                    <Route path="/breeds">
+                        <BreedsPage />
+                    </Route>
+                    <Route path="/voting">
+                        <VotingPage />
+                    </Route>
+                </Switch>
+
         </div>
         </BrowserRouter>
     );

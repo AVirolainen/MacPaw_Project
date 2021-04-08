@@ -1,0 +1,89 @@
+.votingBody{
+    margin: 15px 45px 45px 0;
+    padding-left: 50px;
+    height: 85vh;
+    background-color: #FBE0DC;
+    border-radius: 45px;
+}
+
+.votingHeader{
+    display: flex;
+}
+
+.votingWrapper{
+    width: 60%;
+}
+
+.headerSearch{
+    min-width: 50%;
+    margin-top: 25px;
+
+}
+
+form.example input[type=text] {
+    padding: 15px;
+    font-size: 17px;
+    border: 1px solid white;
+    float: left;
+    width: 100%;
+
+
+    background: #FFFFFF;
+    border-radius: 20px;
+
+}
+
+input[type=text]:focus {
+    outline: none
+}
+
+
+form.example button {
+    position:absolute;
+
+    width: 40px;
+    height: 40px;
+    top: 31px;
+    left: 1300px;
+
+    background: #FBE0DC;
+    border: 1px solid white;
+    border-radius: 10px;
+}
+
+
+form.example button:hover {
+
+}
+
+form.example::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.headerRate{
+    width: 60px;
+    height: 60px;
+
+    background: #FFFFFF;
+    border-radius: 20px;
+
+    display: flex;
+    align-items: center
+}
+
+.rateBlock{
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 150px;
+    text-align: center;
+    width: 25%;
+}
+
+.rateImage{
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
