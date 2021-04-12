@@ -1,11 +1,3 @@
-.votingBody{
-    margin: 15px 45px 45px 0;
-    padding-left: 50px;
-    height: 85vh;
-    background-color: #FBE0DC;
-    border-radius: 45px;
-}
-
 .votingHeader{
     display: flex;
 }
@@ -85,5 +77,107 @@ form.example::after {
 .rateImage{
     display: block;
     margin-left: auto;
-    margin-right: auto
+    margin-right: auto;
+
+}
+
+/*---------Voting Body----------*/
+.votingBody{
+    margin: -35px 45px 0 0;
+    padding-left: 50px;
+    height: 88vh;
+    background: #FFFFFF;
+    border-radius: 45px;
+
+    text-align: center;
+
+}
+.bodyHeader{
+    display: flex;
+}
+
+.backButton{
+    width: 40px;
+    height: 40px;
+
+    margin-top: 15px;
+
+    background: #FBE0DC;
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center
+}
+
+.backText{
+    padding: 0 30px 0 30px;
+    margin-left: 15px;
+    margin-top: 15px;
+    height: 40px;
+
+    background: #FF868E;
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+
+    font-size: 24px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    color: #FFFFFF;
+}
+
+.dogImage{
+    margin-top: 15px;
+    height: 50%;
+    border-radius: 20px;
+}
+
+.buttonsBlock{
+    position: relative;
+    margin: -45px auto auto;
+    display: flex;
+    justify-content: space-between;
+    width: 26%;
+    z-index: 1000;
+    background: #FFFFFF;
+    border-radius: 20px;
+    border: 4px solid #FFFFFF;
+}
+
+.rateButton{
+    width: 80px;
+    height: 80px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.5s;
+
+}
+.rateButton:hover{
+    opacity: 0.5;
+    width: 85px;
+    height: 85px;
+}
+
+.rateButton:first-child{
+    background: #97EAB9;
+    border-radius: 20px 0 0 20px;
+}
+
+.rateButton:nth-child(2){
+    background: #FF868E;
+}
+
+.rateButton:nth-child(3){
+    background: #FFD280;
+    border-radius: 0 20px 20px 0;
+}
+
+.rateImageButton{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 35px;
 }
