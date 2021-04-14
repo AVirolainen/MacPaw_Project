@@ -18,6 +18,7 @@ const VotingPage = ()=>{
     const [image, setImage] = useState("")
     const [message, setMessage] = useState([])
     const [log, setLog] = useState([])
+    const [number, setNumber] = useState(0)
 
     useEffect(() => {
         fetch("https://api.thedogapi.com/v1/breeds?attach_breed=0")
@@ -29,23 +30,23 @@ const VotingPage = ()=>{
             })
             .then(data =>{
                 setInfo(data)
-                setImage(data[10].image.url)
+                setImage(data[number].image.url)
             })
     }, [])
 
     const logMessage= (type)=>{
         const object={
             time: "1",
-            id: info[10].reference_image_id,
+            id: info[number].reference_image_id,
             type: type
         }
-        console.log(object)
+        console.log(message)
         setMessage(message.concat(object))
+      
+        setNumber(number+1)
+        setImage(info[number].image.url)
+    
 
-        const temp = message.map((item, index) => {
-            <ActionMessage data={item} />
-        })
-        setLog(log.concat(temp))
 
     }
 
@@ -100,7 +101,12 @@ const VotingPage = ()=>{
                         <img src={whiteDislike} alt="like" className="rateImageButton"/>
                     </div>
                 </div>
-                {log}
+                {message.slice(0).reverse().map((item, index) => {
+                    return(
+                    <div> 
+                        <ActionMessage data={item} key={index}/>
+                    </div>)
+                })}
             </div>
         </div>
 

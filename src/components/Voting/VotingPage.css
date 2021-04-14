@@ -91,6 +91,8 @@ form.example::after {
 
     text-align: center;
 
+    overflow: hidden;
+
 }
 .bodyHeader{
     display: flex;
@@ -157,8 +159,7 @@ form.example::after {
 }
 .rateButton:hover{
     opacity: 0.5;
-    width: 85px;
-    height: 85px;
+
 }
 
 .rateButton:first-child{
