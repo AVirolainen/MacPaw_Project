@@ -1,8 +1,6 @@
 import "./VotingPage.css"
 import {
-    SearchOutlined,
-    MailOutlined,
-    SettingOutlined } from '@ant-design/icons'
+    SearchOutlined } from '@ant-design/icons'
 import ActionMessage from "./ActionMessage";
 import like from "../../images/rates/like.png"
 import heart from "../../images/rates/heart.png"
@@ -17,7 +15,7 @@ const VotingPage = ()=>{
     const [info, setInfo] = useState({})
     const [image, setImage] = useState("")
     const [message, setMessage] = useState([])
-    const [log, setLog] = useState([])
+
     const [number, setNumber] = useState(0)
 
     useEffect(() => {
@@ -32,7 +30,7 @@ const VotingPage = ()=>{
                 setInfo(data)
                 setImage(data[number].image.url)
             })
-    }, [])
+    }, [number])
 
     const logMessage= (type)=>{
         const object={

@@ -12,12 +12,14 @@ import {
 import BreedsPage from "./components/Breeds/BreedsPage";
 import VotingPage from "./components/Voting/VotingPage";
 import GalleryPage from "./components/Gallery/GalleryPage";
+import {useEffect, useState} from "react";
 
 
 
 import './App.css';
 
 function App() {
+
     return (
         <BrowserRouter>
         <div className="appBody">
@@ -79,15 +81,10 @@ function App() {
                             </div>
                         </div>
                     </Route>
-                    <Route path="/gallery">
-                        <GalleryPage />
-                    </Route>
-                    <Route path="/breeds">
-                        <BreedsPage />
-                    </Route>
-                    <Route path="/voting">
-                        <VotingPage />
-                    </Route>
+                    <Route path="/gallery" component={()=><GalleryPage/>} />
+                    <Route path="/breeds"  component={()=><BreedsPage/>} />  
+                    <Route path="/voting" component={()=><VotingPage/>} />
+
                 </Switch>
 
         </div>
