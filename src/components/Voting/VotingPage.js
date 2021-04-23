@@ -1,10 +1,5 @@
 import "./VotingPage.css"
-import {
-    SearchOutlined } from '@ant-design/icons'
 import ActionMessage from "./ActionMessage";
-import like from "../../images/rates/like.png"
-import heart from "../../images/rates/heart.png"
-import dislike from "../../images/rates/dislike.png"
 import back from "../../images/rates/back.png"
 import whiteLike from "../../images/whiterates/whiteSmile.png"
 import whiteHeart from "../../images/whiterates/whiteHeart.png"
@@ -49,34 +44,6 @@ const VotingPage = ()=>{
     }
 
     return(
-
-        <div className="votingWrapper">
-            <div className="votingHeader">
-
-                <div className="headerSearch">
-                    <form className="example">
-                        <input type="text" placeholder="Search for breeds by name" />
-                        <button type="submit">
-                            <SearchOutlined />
-                        </button>
-
-                    </form>
-                </div>
-
-                <div className="rateBlock">
-                    <div className="headerRate">
-                        <img src={like} alt="like" className="rateImage"/>
-                    </div>
-                    <div className='headerRate'>
-                        <img src={heart} alt="heart" className="rateImage"/>
-                    </div>
-                    <div className="headerRate" >
-                        <img src={dislike} alt="dislike" className="rateImage"/>
-                    </div>
-                </div>
-
-
-            </div>
             <div className="votingBody">
                 <div className="bodyHeader">
                     <div className="backButton">
@@ -106,7 +73,7 @@ const VotingPage = ()=>{
                     </div>)
                 })}
             </div>
-        </div>
+     
 
     )
 }

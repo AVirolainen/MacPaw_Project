@@ -114,34 +114,6 @@ const BreedsPage = ()=>{
       }
 
     return(
-        <div className="votingWrapper">
-
-        <div className="votingHeader">
-
-            <div className="headerSearch">
-                <form className="example">
-                    <input type="text" placeholder="Search for breeds by name" />
-                    <button type="submit">
-                        <SearchOutlined />
-                    </button>
-
-                </form>
-            </div>
-
-            <div className="rateBlock">
-                <div className="headerRate">
-                    <img src={like} alt="like" className="rateImage"/>
-                </div>
-                <div className='headerRate'>
-                    <img src={heart} alt="heart" className="rateImage"/>
-                </div>
-                <div className="headerRate" >
-                    <img src={dislike} alt="dislike" className="rateImage"/>
-                </div>
-            </div>
-
-
-        </div>
         <div className="breedsBody">
             <div className="bodyHeader">
                 <div className="backButton">
@@ -195,7 +167,7 @@ const BreedsPage = ()=>{
                 }
             </div>
         </div>
-    </div>
+ 
     )
 }
 

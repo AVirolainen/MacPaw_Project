@@ -12,13 +12,21 @@ import {
 import BreedsPage from "./components/Breeds/BreedsPage";
 import VotingPage from "./components/Voting/VotingPage";
 import GalleryPage from "./components/Gallery/GalleryPage";
+import SearchPage from "./components/Search/SearchPage"
 import {useEffect, useState} from "react";
+import {
+    SearchOutlined } from '@ant-design/icons'
+
+import like from "./images/rates/like.png"
+import heart from "./images/rates/heart.png"
+import dislike from "./images/rates/dislike.png"
 
 
 
 import './App.css';
 
 function App() {
+    const [breed, setBreed] = useState("")
 
     return (
         <BrowserRouter>
@@ -71,8 +79,35 @@ function App() {
                 </div>
             </div>
 
+            <div className="votingWrapper">
+            <div className="votingHeader">
 
-                <Switch>
+                <div className="headerSearch">
+                    <form className="example">
+                        <input type="text" placeholder="Search for breeds by name" onChange={(e) => {setBreed(e.target.value);}}/>
+                        <Link to="/search"  tyle={{ textDecoration: 'none' }}>
+                            <button type="submit" className="buttonSearch">
+                                <SearchOutlined />
+                            </button>
+                        </Link>
+
+                    </form>
+                </div>
+
+                <div className="rateBlock">
+                    <div className="headerRate">
+                        <img src={like} alt="like" className="rateImage"/>
+                    </div>
+                    <div className='headerRate'>
+                        <img src={heart} alt="heart" className="rateImage"/>
+                    </div>
+                    <div className="headerRate" >
+                        <img src={dislike} alt="dislike" className="rateImage"/>
+                    </div>
+                </div>
+            </div>
+
+            <Switch>
                     <Route exact path="/">
                         <div className="mainField">
                             <div className="fieldBack"/>
@@ -84,10 +119,13 @@ function App() {
                     <Route path="/gallery" component={()=><GalleryPage/>} />
                     <Route path="/breeds"  component={()=><BreedsPage/>} />  
                     <Route path="/voting" component={()=><VotingPage/>} />
+                    <Route path="/search" component={()=><SearchPage breed={breed}/>} />
 
                 </Switch>
 
-        </div>
+            </div>
+
+            </div>
         </BrowserRouter>
     );
 }
