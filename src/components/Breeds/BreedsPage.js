@@ -13,9 +13,25 @@ import unalphabet from "../../images/whiterates/unalpabet.png"
 
 import {useEffect, useState} from "react";
 
+function compare(a, b) {
+    // Use toUpperCase() to ignore character casing
+    const bandA = a.name.toUpperCase();
+    const bandB = b.name.toUpperCase();
+  
+    let comparison = 0;
+    if (bandA > bandB) {
+      comparison = 1;
+    } else if (bandA < bandB) {
+      comparison = -1;
+    }
+    return comparison;
+  }
+
+
 const BreedsPage = ()=>{
     const [info, setInfo] = useState([])
     const [limit, setLimit] = useState(10)
+    const [breed, setBreed] = useState("All breeds")
 
     useEffect(() => {
         fetch("https://api.thedogapi.com/v1/breeds?attach_breed=0")
@@ -33,17 +49,24 @@ const BreedsPage = ()=>{
     console.log(info)
 
     const menuBreeds = (
+        <div className="dropdownBreedsMenu">
         <Menu>
-            <Menu.Item key="0">
-            <a className="dropdownText" href="https://www.antgroup.com">1st menu item</a>
-            </Menu.Item>
-            <Menu.Item key="1">
-            <a className="dropdownText" href="https://www.aliyun.com">2nd menu item</a>
-            </Menu.Item>
-            <Menu.Item key="3">
-            <a className="dropdownText" href="https://www.aliyun.com">3rd menu item</a>
-            </Menu.Item>
+        <Menu.Item key="all">
+            <a className="dropdownTextLimits" onClick={()=>handleBreed("All breeds")}>
+                All breeds
+            </a>
+        </Menu.Item>
+        {info.map((item, index)=>{
+                       return(
+                        <Menu.Item key={index}>
+                        <a className="dropdownTextLimits" onClick={()=>handleBreed(item.name)}>
+                            {item.name}
+                        </a>
+                        </Menu.Item>
+                       ) 
+                })}
         </Menu>
+        </div>
       );
     
     const menuLimits = (
@@ -75,7 +98,21 @@ const BreedsPage = ()=>{
           setLimit(number)
       }
       
-      const handleAlphabey
+      const handleAlphabet=(flag)=>{
+        let temp = info.sort(compare)
+        if (flag){
+            setInfo(temp)
+        }
+        else{
+            let temp2 = temp.reverse()
+            setInfo(temp2)
+        }
+      }
+
+      const handleBreed=(name)=>{
+          setBreed(name)
+      }
+
     return(
         <div className="votingWrapper">
 
@@ -116,8 +153,8 @@ const BreedsPage = ()=>{
                 <div className="dropdownBreeds">
                     <Dropdown overlay={menuBreeds} trigger={['click']}>
                         <a className="dropdownText" onClick={e => e.preventDefault()}>
-                            <div className="dropdownTextBreeds">All breeds</div>
-                            <DownOutlined />
+                            <div className="dropdownTextBreeds">{breed}</div>
+                            
                         </a>
                         
                     </Dropdown>
@@ -132,16 +169,18 @@ const BreedsPage = ()=>{
                     </Dropdown> 
                 </div> 
                 <div className="alphabetWrapper">
-                    <div className="dropdownBreeds alp">
+                    <div className="dropdownBreeds alp" onClick={()=>handleAlphabet(true)}>
                         <img className="alphabetImage" src={alphabet} alt="img"/>
                     </div>
-                    <div className="dropdownBreeds alp">
+                    <div className="dropdownBreeds alp" onClick={()=>handleAlphabet(false)}>
                         <img className="alphabetImage" src={unalphabet} alt="img"/>
                     </div> 
                 </div>
             </div>
             <div className="rowBody">
-                {info.slice(0, limit).map((item, index)=>{
+                {
+                info.map((item, index)=>{
+                    if((breed == "All breeds" && index<limit) || (breed == item.name)){
                        return(
                             <div className="containerBreed">
                             <img src={item.image.url} alt="imageBreed" className="imageBreeds"/>
@@ -149,8 +188,11 @@ const BreedsPage = ()=>{
                                 <div class="text">{item.name}</div>
                             </div>
                             </div>
-                       ) 
-                })}
+                       )}
+                })
+                
+                
+                }
             </div>
         </div>
     </div>
