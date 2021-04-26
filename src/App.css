@@ -113,13 +113,13 @@
 .mainField{
     width: 60%;
     display: flex;
-
+    
     position: relative;
 }
 
 .fieldBack{
     margin: 15px 45px 45px 0;
-    height: 95vh;
+    height: 80vh;
     width: 95.7%;
     background-color: #FBE0DC;
     border-radius: 45px;
@@ -136,7 +136,7 @@
 }
 .mainImage{
     width: 775px;
-    height: 1024px;
+    height: 900px;
     margin-top: -40px;
     margin-left: 275px;
 

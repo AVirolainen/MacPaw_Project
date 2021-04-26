@@ -13,9 +13,10 @@ import BreedsPage from "./components/Breeds/BreedsPage";
 import VotingPage from "./components/Voting/VotingPage";
 import GalleryPage from "./components/Gallery/GalleryPage";
 import SearchPage from "./components/Search/SearchPage"
+import Info from "./components/Info/Info"
+
 import {useEffect, useState} from "react";
-import {
-    SearchOutlined } from '@ant-design/icons'
+import {SearchOutlined} from '@ant-design/icons'
 
 import like from "./images/rates/like.png"
 import heart from "./images/rates/heart.png"
@@ -85,7 +86,7 @@ function App() {
                 <div className="headerSearch">
                     <form className="example">
                         <input type="text" placeholder="Search for breeds by name" onChange={(e) => {setBreed(e.target.value);}}/>
-                        <Link to="/search"  tyle={{ textDecoration: 'none' }}>
+                        <Link to="/search"  style={{ textDecoration: 'none' }}>
                             <button type="submit" className="buttonSearch">
                                 <SearchOutlined />
                             </button>
@@ -120,6 +121,7 @@ function App() {
                     <Route path="/breeds"  component={()=><BreedsPage/>} />  
                     <Route path="/voting" component={()=><VotingPage/>} />
                     <Route path="/search" component={()=><SearchPage breed={breed}/>} />
+                    <Route path="/info" component={()=><Info />} />
 
                 </Switch>
 

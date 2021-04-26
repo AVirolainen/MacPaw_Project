@@ -1,29 +1,62 @@
 /* eslint-disable no-undef */
 import "./GalleryPage.css"
+import ModalPage from "./ModalPage"
 
-import like from "../../images/rates/like.png"
-import heart from "../../images/rates/heart.png"
-import dislike from "../../images/rates/dislike.png"
+import {useEffect, useState} from "react";
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 import back from "../../images/rates/back.png"
+import upload from "../../images/whiterates/upload.png"
 import { DownOutlined } from '@ant-design/icons';
 import { Menu, Dropdown } from 'antd';
 
 const GalleryPage = ()=>{
+    const [info, setInfo] = useState([])
+    const [order, setOrder] = useState("Random")
+    const [type, setType] = useState("Static")
+    const [limit, setLimit] = useState(5)
+    const [breed, setBreed] = useState("All breeds")
+
+    useEffect(() => {
+        fetch("https://api.thedogapi.com/v1/breeds?attach_breed=0")
+            .then((response)=>{
+                if(response.ok){
+                    return(response.json())
+                }
+                throw response
+            })
+            .then(data =>{
+                setInfo(data)
+            })
+    }, [info])
+
+    const handleLimits=(e)=>{
+        setLimit(e)
+    }
+    const handleOrder=(e)=>{
+        setOrder(e)
+    }
+    const handleType=(e)=>{
+        setType(e)
+    }
+    const handleBreed=(e)=>{
+        setBreed(e)
+    }
 
     const menuOrder = (
         <Menu>
             <Menu.Item key="0">
-            <a className="dropdownTextLimits" onClick={()=>handleLimits(5)}>
+            <a className="dropdownTextLimits" onClick={()=>handleOrder("Random")}>
                 Random
             </a>
             </Menu.Item>
             <Menu.Item key="1">
-            <a className="dropdownTextLimits" onClick={()=>handleLimits(10)}>
+            <a className="dropdownTextLimits" onClick={()=>handleOrder("Desc")}>
                 Desc
             </a>
             </Menu.Item>
             <Menu.Item key="3">
-            <a className="dropdownTextLimits" onClick={()=>handleLimits(15)}>
+            <a className="dropdownTextLimits" onClick={()=>handleOrder("Asc")}>
                 Asc
             </a>
             </Menu.Item>
@@ -34,17 +67,17 @@ const GalleryPage = ()=>{
       const menuType = (
         <Menu>
             <Menu.Item key="0">
-            <a className="dropdownTextLimits" onClick={()=>handleLimits(5)}>
+            <a className="dropdownTextLimits" onClick={()=>handleType("All")}>
                 All
             </a>
             </Menu.Item>
             <Menu.Item key="1">
-            <a className="dropdownTextLimits" onClick={()=>handleLimits(10)}>
+            <a className="dropdownTextLimits" onClick={()=>handleType("Static")}>
                 Static
             </a>
             </Menu.Item>
             <Menu.Item key="3">
-            <a className="dropdownTextLimits" onClick={()=>handleLimits(15)}>
+            <a className="dropdownTextLimits" onClick={()=>handleType("Animated")}>
                 Animated
             </a>
             </Menu.Item>
@@ -52,25 +85,25 @@ const GalleryPage = ()=>{
         </Menu>
       );
 
-      const menuBreed= (
+      const menuBreed = (
+        <div className="dropdownBreedsMenu">
         <Menu>
-            <Menu.Item key="0">
-            <a className="dropdownTextLimits" onClick={()=>handleLimits(5)}>
-                All
+        <Menu.Item key="all">
+            <a className="dropdownTextLimits" onClick={()=>handleBreed("All breeds")}>
+                All breeds
             </a>
-            </Menu.Item>
-            <Menu.Item key="1">
-            <a className="dropdownTextLimits" onClick={()=>handleLimits(10)}>
-                Static
-            </a>
-            </Menu.Item>
-            <Menu.Item key="3">
-            <a className="dropdownTextLimits" onClick={()=>handleLimits(15)}>
-                Animated
-            </a>
-            </Menu.Item>
-
+        </Menu.Item>
+        {info.map((item, index)=>{
+                       return(
+                        <Menu.Item key={index}>
+                        <a className="dropdownTextLimits" onClick={()=>handleBreed(item.name)}>
+                            {item.name}
+                        </a>
+                        </Menu.Item>
+                       ) 
+                })}
         </Menu>
+        </div>
       );
 
       const menuLimit= (
@@ -108,6 +141,9 @@ const GalleryPage = ()=>{
                 <div className="backText">
                     Gallery
                 </div>
+                <Popup trigger={<button className="modalButton"> <img src={upload} alt="back" className="rateImage"/> Open Modal </button>} modal>
+                    {close => <ModalPage />}
+                </Popup>
             </div>
             <div className="options">
                 <div className="optionsLine">
@@ -116,7 +152,7 @@ const GalleryPage = ()=>{
                         <div className="dropdownOptions">
                         <Dropdown overlay={menuOrder} trigger={['click']}>
                             <a className="dropdownTextOptions" onClick={e => e.preventDefault()}>
-                                <div className="dropdownOptions">Random </div>
+                                <div className="dropdownOptions">{order}</div>
                                 <DownOutlined />
                             </a>             
                         </Dropdown> 
@@ -127,7 +163,7 @@ const GalleryPage = ()=>{
                         <div className="dropdownOptions">
                             <Dropdown overlay={menuType} trigger={['click']}>
                                 <a className="dropdownTextOptions" onClick={e => e.preventDefault()}>
-                                <div className="dropdownOptions">Static</div>
+                                <div className="dropdownOptions">{type}</div>
                                     <DownOutlined />
                                 </a>             
                             </Dropdown> 
@@ -140,7 +176,7 @@ const GalleryPage = ()=>{
                         <div className="dropdownOptions">
                             <Dropdown overlay={menuBreed} trigger={['click']}>
                                 <a className="dropdownTextOptions" onClick={e => e.preventDefault()}>
-                                <div className="dropdownOptions">None </div>
+                                <div className="dropdownOptions">{breed}</div>
                                     <DownOutlined />
                                 </a>             
                             </Dropdown> 
@@ -152,7 +188,7 @@ const GalleryPage = ()=>{
                         <div className="dropdownOptions">
                             <Dropdown overlay={menuLimit} trigger={['click']}>
                                 <a className="dropdownTextOptions" onClick={e => e.preventDefault()}>
-                                    <div className="dropdownOptions">5 items per page </div>
+                                    <div className="dropdownOptions">{limit} items per page </div>
                                     <DownOutlined />
                                 </a>             
                             </Dropdown> 
@@ -160,6 +196,25 @@ const GalleryPage = ()=>{
                     </div>
                 </div>
             </div>
+
+            
+            <div className="breedsBodyGallery">
+                {
+                info.map((item, index)=>{
+                    if((breed == "All breeds" && index<limit) || (breed == item.name)){
+                        return(
+                             <div className="containerBreed">
+                             <img src={item.image.url} alt="imageBreed" className="imageBreeds"/>
+                             <div class="middle">
+                                 <div class="text">{item.name}</div>
+                             </div>
+                             </div>
+                        )}
+                })
+                 
+                }
+            </div>
+            
         </div>
         
     )

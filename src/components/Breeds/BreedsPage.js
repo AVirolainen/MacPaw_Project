@@ -2,14 +2,17 @@ import "./BreedsPage.css"
 import 'antd/dist/antd.css';
 import {SearchOutlined} from '@ant-design/icons'
 
-import like from "../../images/rates/like.png"
-import heart from "../../images/rates/heart.png"
-import dislike from "../../images/rates/dislike.png"
 import back from "../../images/rates/back.png"
 import { Menu, Dropdown } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import alphabet from "../../images/whiterates/alphabet.png"
 import unalphabet from "../../images/whiterates/unalpabet.png"
+import {
+    BrowserRouter,
+    Switch,
+    Route,
+    Link
+} from "react-router-dom";
 
 import {useEffect, useState} from "react";
 
@@ -157,7 +160,10 @@ const BreedsPage = ()=>{
                             <div className="containerBreed">
                             <img src={item.image.url} alt="imageBreed" className="imageBreeds"/>
                             <div class="middle">
-                                <div class="text">{item.name}</div>
+                                <Link to={{ 
+                                            pathname: "/info", 
+                                            param1: "Par1" 
+                                            }} class="text">{item.name}</Link>
                             </div>
                             </div>
                        )}
